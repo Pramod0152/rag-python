@@ -3,6 +3,7 @@ import grpc.aio
 
 from proto import rag_pb2, rag_pb2_grpc
 from services.document_extractor import extract_document
+from services.chunking import chunk_text
 
 
 class RagServicer(rag_pb2_grpc.RagServiceServicer):
@@ -10,7 +11,8 @@ class RagServicer(rag_pb2_grpc.RagServiceServicer):
         content = bytes(request.content)
 
         text = extract_document(request.filename, content)
-        return rag_pb2.DocumentResponse(text=text)
+        chunks = chunk_text(text, metadata={"filename": request.filename})
+        return rag_pb2.DocumentResponse(text=chunks)
 
 
 async def serve():
