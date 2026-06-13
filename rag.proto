@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package rag;
+
+service RagService {
+  rpc UploadDocument (DocumentRequest) returns (DocumentResponse);
+  rpc GetAnswer (QueryRequest) returns (QueryResponse);
+}
+
+message DocumentRequest {
+  string filename = 1;
+  bytes  content  = 2;
+}
+
+message DocumentResponse {
+  string document_id    = 1;
+  int32  chunks_created = 2;
+  string status = 3;
+}
+
+message QueryRequest {
+  string query = 1;
+}
+
+message QueryResponse {
+  string answer  = 1;
+  repeated string sources = 2;
+}
