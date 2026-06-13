@@ -5,6 +5,7 @@ from proto import rag_pb2, rag_pb2_grpc
 from services.document_extractor import extract_document
 from services.chunking import chunk_text
 from services.storage_service import store_chunks
+from services.llm_service import answer_query
 
 
 class RagServicer(rag_pb2_grpc.RagServiceServicer):
@@ -24,6 +25,10 @@ class RagServicer(rag_pb2_grpc.RagServiceServicer):
             chunks_created=result["chunks_created"],
             status=result["status"],
         )
+
+    async def GetAnswer(self, request, context):
+        result = await answer_query(request.query)
+        return rag_pb2.QueryResponse(answer=result["answer"], sources=result["sources"])
 
 
 async def serve():
