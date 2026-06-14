@@ -34,10 +34,10 @@ class RagServiceStub:
         Args:
             channel: A grpc.Channel.
         """
-        self.UploadDocument = channel.unary_unary(
+        self.UploadDocument = channel.unary_stream(
                 '/rag.RagService/UploadDocument',
                 request_serializer=rag__pb2.DocumentRequest.SerializeToString,
-                response_deserializer=rag__pb2.DocumentResponse.FromString,
+                response_deserializer=rag__pb2.UploadProgress.FromString,
                 _registered_method=True)
         self.GetAnswer = channel.unary_unary(
                 '/rag.RagService/GetAnswer',
@@ -64,10 +64,10 @@ class RagServiceServicer:
 
 def add_RagServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'UploadDocument': grpc.unary_unary_rpc_method_handler(
+            'UploadDocument': grpc.unary_stream_rpc_method_handler(
                     servicer.UploadDocument,
                     request_deserializer=rag__pb2.DocumentRequest.FromString,
-                    response_serializer=rag__pb2.DocumentResponse.SerializeToString,
+                    response_serializer=rag__pb2.UploadProgress.SerializeToString,
             ),
             'GetAnswer': grpc.unary_unary_rpc_method_handler(
                     servicer.GetAnswer,
@@ -96,12 +96,12 @@ class RagService:
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(
+        return grpc.experimental.unary_stream(
             request,
             target,
             '/rag.RagService/UploadDocument',
             rag__pb2.DocumentRequest.SerializeToString,
-            rag__pb2.DocumentResponse.FromString,
+            rag__pb2.UploadProgress.FromString,
             options,
             channel_credentials,
             insecure,

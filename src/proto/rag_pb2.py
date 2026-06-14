@@ -24,21 +24,23 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\trag.proto\x12\x03rag\"4\n\x0f\x44ocumentRequest\x12\x10\n\x08\x66ilename\x18\x01 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x02 \x01(\x0c\"O\n\x10\x44ocumentResponse\x12\x13\n\x0b\x64ocument_id\x18\x01 \x01(\t\x12\x16\n\x0e\x63hunks_created\x18\x02 \x01(\x05\x12\x0e\n\x06status\x18\x03 \x01(\t\"\x1d\n\x0cQueryRequest\x12\r\n\x05query\x18\x01 \x01(\t\"0\n\rQueryResponse\x12\x0e\n\x06\x61nswer\x18\x01 \x01(\t\x12\x0f\n\x07sources\x18\x02 \x03(\t2\x7f\n\nRagService\x12=\n\x0eUploadDocument\x12\x14.rag.DocumentRequest\x1a\x15.rag.DocumentResponse\x12\x32\n\tGetAnswer\x12\x11.rag.QueryRequest\x1a\x12.rag.QueryResponseb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\trag.proto\x12\x03rag\"p\n\x0eUploadProgress\x12\x0c\n\x04step\x18\x01 \x01(\t\x12\x0f\n\x07message\x18\x02 \x01(\t\x12\x18\n\x10progress_percent\x18\x03 \x01(\x05\x12%\n\x06result\x18\x04 \x01(\x0b\x32\x15.rag.DocumentResponse\"4\n\x0f\x44ocumentRequest\x12\x10\n\x08\x66ilename\x18\x01 \x01(\t\x12\x0f\n\x07\x63ontent\x18\x02 \x01(\x0c\"O\n\x10\x44ocumentResponse\x12\x13\n\x0b\x64ocument_id\x18\x01 \x01(\t\x12\x16\n\x0e\x63hunks_created\x18\x02 \x01(\x05\x12\x0e\n\x06status\x18\x03 \x01(\t\"\x1d\n\x0cQueryRequest\x12\r\n\x05query\x18\x01 \x01(\t\"0\n\rQueryResponse\x12\x0e\n\x06\x61nswer\x18\x01 \x01(\t\x12\x0f\n\x07sources\x18\x02 \x03(\t2\x7f\n\nRagService\x12=\n\x0eUploadDocument\x12\x14.rag.DocumentRequest\x1a\x13.rag.UploadProgress0\x01\x12\x32\n\tGetAnswer\x12\x11.rag.QueryRequest\x1a\x12.rag.QueryResponseb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'rag_pb2', _globals)
 if not _descriptor._USE_C_DESCRIPTORS:
   DESCRIPTOR._loaded_options = None
-  _globals['_DOCUMENTREQUEST']._serialized_start=18
-  _globals['_DOCUMENTREQUEST']._serialized_end=70
-  _globals['_DOCUMENTRESPONSE']._serialized_start=72
-  _globals['_DOCUMENTRESPONSE']._serialized_end=151
-  _globals['_QUERYREQUEST']._serialized_start=153
-  _globals['_QUERYREQUEST']._serialized_end=182
-  _globals['_QUERYRESPONSE']._serialized_start=184
-  _globals['_QUERYRESPONSE']._serialized_end=232
-  _globals['_RAGSERVICE']._serialized_start=234
-  _globals['_RAGSERVICE']._serialized_end=361
+  _globals['_UPLOADPROGRESS']._serialized_start=18
+  _globals['_UPLOADPROGRESS']._serialized_end=130
+  _globals['_DOCUMENTREQUEST']._serialized_start=132
+  _globals['_DOCUMENTREQUEST']._serialized_end=184
+  _globals['_DOCUMENTRESPONSE']._serialized_start=186
+  _globals['_DOCUMENTRESPONSE']._serialized_end=265
+  _globals['_QUERYREQUEST']._serialized_start=267
+  _globals['_QUERYREQUEST']._serialized_end=296
+  _globals['_QUERYRESPONSE']._serialized_start=298
+  _globals['_QUERYRESPONSE']._serialized_end=346
+  _globals['_RAGSERVICE']._serialized_start=348
+  _globals['_RAGSERVICE']._serialized_end=475
 # @@protoc_insertion_point(module_scope)
